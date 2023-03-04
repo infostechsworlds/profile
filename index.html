@@ -40,3 +40,209 @@
   </body>
 </html>
 
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Portfolio PDF Download</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      #container {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+
+      h1 {
+        text-align: center;
+        margin-top: 0;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      label {
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      input[type="url"],
+      input[type="file"] {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        box-sizing: border-box;
+      }
+
+      input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #3e8e41;
+      }
+
+      #preview {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 40px;
+      }
+
+      #preview img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      #download-button {
+        background-color: #4CAF50;
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+        margin-top: 20px;
+      }
+
+      #download-button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      #download-button:hover:not(:disabled) {
+        background-color: #3e8e41;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <h1>My Portfolio</h1>
+      <form id="portfolio-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" required>
+
+        <label for="linkedin">LinkedIn:</label>
+        <input type="url" id="linkedin" name="linkedin" required>
+
+        <label for="github">GitHub:</label>
+        <input type="url" id="github" name="github" required>
+
+        <label for="profile-pic">Profile Picture:</label>
+        <input type="file" id="profile-pic" name="profile-pic" accept="image/png" required>
+        
+            <input type="submit" value="Create PDF">
+  </form>
+
+  <div id="preview"></div>
+
+  <button id="download-button" disabled>Download PDF</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+<script>
+  const form = document.getElementById('portfolio-form');
+  const preview = document.getElementById('preview');
+  const downloadButton = document.getElementById('download-button');
+
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+
+    // Read form data
+    const formData = new FormData(form);
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const phone = formData.get('phone');
+    const linkedin = formData.get('linkedin');
+    const github = formData.get('github');
+
+    // Read profile picture file and create an image
+    const fileReader = new FileReader();
+    const fileInput = document.getElementById('profile-pic');
+
+    fileReader.addEventListener('load', () => {
+      const img = new Image();
+      img.src = fileReader.result;
+
+      // Create a canvas and draw the image and text
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      const imgWidth = img.width;
+      const imgHeight = img.height;
+      canvas.width = imgWidth;
+      canvas.height = imgHeight + 100;
+
+      // Draw image on canvas
+      ctx.drawImage(img, 0, 0, imgWidth, imgHeight);
+
+      // Draw text on canvas
+      ctx.font = 'bold 20px Arial';
+      ctx.fillStyle = '#000';
+      ctx.textAlign = 'center';
+      ctx.fillText(name, imgWidth / 2, imgHeight + 30);
+      ctx.fillText(email, imgWidth / 2, imgHeight + 50);
+      ctx.fillText(phone, imgWidth / 2, imgHeight + 70);
+      ctx.fillText(linkedin, imgWidth / 2, imgHeight + 90);
+      ctx.fillText(github, imgWidth / 2, imgHeight + 110);
+
+      // Convert canvas to PDF
+      const doc = new jsPDF();
+      doc.addImage(canvas.toDataURL('image/png'), 'PNG', 10, 10, imgWidth, imgHeight);
+      doc.save('portfolio.pdf');
+
+      // Show the preview and enable the download button
+      preview.innerHTML = '';
+      preview.appendChild(img);
+      downloadButton.removeAttribute('disabled');
+    });
+
+    // Read the selected file as a data URL
+    const file = formData.get('profile-pic');
+    fileReader.readAsDataURL(file);
+  });
+
+  downloadButton.addEventListener('click', () => {
+    const doc = new jsPDF();
+    const canvas = preview.querySelector('canvas');
+    const img = preview.querySelector('img');
+    const imgWidth = img.width;
+    const imgHeight = img.height;
+    doc.addImage(canvas.toDataURL('image/png'), 'PNG', 10, 10, imgWidth, imgHeight);
+    doc.save('portfolio.pdf');
+  });
+</script>
+
+    
+    </body>
+</html>
+    
