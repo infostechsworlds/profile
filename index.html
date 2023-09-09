@@ -6,45 +6,66 @@
     <title>Web Developer</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Bootstrap CSS -->
     <style>
-        /* Add custom CSS for the floating WhatsApp button */
-        .whatsapp-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
+        /* Add custom CSS for animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInAnimation 1s ease-in-out forwards;
+        }
+
+        @keyframes fadeInAnimation {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
 <body>
-    <header>
+    <header class="bg-primary text-white text-center py-5">
         <h1>Welcome to Our Web Developer Website</h1>
         <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="terms.html">Terms & Conditions</a></li>
-                <li><a href="refund.html">Refund Policy</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-                <li><a href="privacy.html">Privacy Policy</a></li>
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="terms.html">Terms & Conditions</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="refund.html">Refund Policy</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="privacy.html">Privacy Policy</a>
+                </li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <section>
-            <h2>Welcome to Our Web Developer Website</h2>
-            <p>We provide top-notch web development services to meet your business needs.</p>
+    <main class="container my-5">
+        <section class="fade-in">
+            <h2 class="text-center">About Web Development</h2>
+            <p>
+                Web development is the process of creating websites and web applications that are accessible over the internet. It involves a wide range of skills and technologies, including HTML, CSS, JavaScript, and various web development frameworks.
+            </p>
+            <p>
+                In today's digital age, having a strong online presence is crucial for businesses and individuals. A well-designed and functional website can attract customers, showcase your products or services, and provide a platform for interaction and engagement.
+            </p>
+            <p>
+                Our team of experienced web developers is dedicated to helping you achieve your online goals. Whether you need a simple static website, a dynamic e-commerce platform, or a complex web application, we have the expertise to bring your vision to life.
+            </p>
         </section>
     </main>
 
-    <footer>
+    <footer class="bg-dark text-white text-center py-3">
         <p>&copy; 2023 Web Developer</p>
     </footer>
-
-    <!-- Floating WhatsApp button -->
-    <a href="https://api.whatsapp.com/send?phone=7206917389" class="whatsapp-button btn btn-success" target="_blank">
-        WhatsApp
-    </a>
 
     <!-- Bootstrap JS (optional) -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
