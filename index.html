@@ -4,70 +4,125 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Developer</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Bootstrap CSS -->
+    <!-- Link to Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Custom CSS for animation and styling -->
     <style>
-        /* Add custom CSS for animation */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInAnimation 1s ease-in-out forwards;
+        /* Header styles */
+        header {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
         }
 
+        /* Navigation styles */
+        .navbar {
+            background-color: #343a40;
+        }
+
+        .navbar-dark .navbar-nav .nav-link {
+            color: #fff;
+        }
+
+        .navbar-dark .navbar-toggler-icon {
+            background-color: #fff;
+        }
+
+        /* Main content styles */
+        main {
+            background-color: #f8f9fa;
+            padding: 50px 0;
+        }
+
+        /* Animation effect */
         @keyframes fadeInAnimation {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
+
+        /* About Web section styles */
+        .about-web {
+            animation: fadeInAnimation 1s ease-in-out;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #343a40;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
     </style>
 </head>
 <body>
-    <header class="bg-primary text-white text-center py-5">
+    <!-- Header -->
+    <header>
         <h1>Welcome to Our Web Developer Website</h1>
-        <nav>
-            <ul class="nav justify-content-center">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="about.html">About Us</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="terms.html">Terms & Conditions</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="refund.html">Refund Policy</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact Us</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="privacy.html">Privacy Policy</a>
-                </li>
-            </ul>
+        <!-- Navigation bar -->
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="terms.html">Terms & Conditions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="refund.html">Refund Policy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="privacy.html">Privacy Policy</a>
+                    </li>
+                </ul>
+            </div>
         </nav>
     </header>
 
+    <!-- Main content -->
     <main class="container my-5">
-        <section class="fade-in">
+        <section class="about-web">
             <h2 class="text-center">About Web Development</h2>
             <p>
-                Web development is the process of creating websites and web applications that are accessible over the internet. It involves a wide range of skills and technologies, including HTML, CSS, JavaScript, and various web development frameworks.
+                Web development is the art and science of building websites and web applications. It encompasses a wide range of technologies and skills, including HTML, CSS, JavaScript, and various web frameworks and libraries.
             </p>
             <p>
-                In today's digital age, having a strong online presence is crucial for businesses and individuals. A well-designed and functional website can attract customers, showcase your products or services, and provide a platform for interaction and engagement.
+                In today's digital age, having a strong online presence is essential for businesses, organizations, and individuals. A well-crafted website can serve as your virtual storefront, attracting visitors, conveying information, and facilitating interactions.
             </p>
             <p>
-                Our team of experienced web developers is dedicated to helping you achieve your online goals. Whether you need a simple static website, a dynamic e-commerce platform, or a complex web application, we have the expertise to bring your vision to life.
+                Our team of experienced web developers is dedicated to delivering high-quality web solutions that meet your unique needs. Whether you require a simple, elegant website or a complex, feature-rich web application, we have the expertise to bring your vision to life.
+            </p>
+            <p>
+                Explore our website to learn more about our services and how we can help you succeed in the digital world.
             </p>
         </section>
     </main>
 
-    <footer class="bg-dark text-white text-center py-3">
-        <p>&copy; 2023 Web Developer</p>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Web Developer</p>
+        </div>
     </footer>
 
-    <!-- Bootstrap JS (optional) -->
+    <!-- Link to Bootstrap JS (optional) -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
