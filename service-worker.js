@@ -5,8 +5,8 @@ self.addEventListener('install', event => {
             return cache.addAll([
                 // List of files to be cached
                 'index.html',
-                'https://vip-you.github.io/update/icon.png',
-                'https://vip-you.github.io/update/icon.png',
+                'https://infostechsworlds.github.io/profile/skill.png',
+                'https://infostechsworlds.github.io/profile/skill.png',
                 // Add other assets here, e.g., CSS, JS, images, etc.
             ]);
         })
