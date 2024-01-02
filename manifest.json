@@ -7,12 +7,12 @@
     "theme_color": "black",
     "icons": [
         {
-            "src": "https://infostechsworlds.github.io/profile/index.html",
+            "src": "https://infostechsworlds.github.io/profile/skill.png",
             "type": "image/png",
             "sizes": "192x192"
         },
         {
-            "src": "https://infostechsworlds.github.io/profile/index.html",
+            "src": "https://infostechsworlds.github.io/profile/skill.png",
             "type": "image/png",
             "sizes": "512x512"
         }
