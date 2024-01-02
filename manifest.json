@@ -1,18 +1,18 @@
 {
-    "name": "Raj Web App",
-    "short_name": "Raj",
-    "start_url": "https://vip-you.github.io/update/index.html",
+    "name": "infostechsworlds Web App",
+    "short_name": "infostechsworlds",
+    "start_url": "https://infostechsworlds.github.io/profile/index.html",
     "display": "standalone",
-    "background_color": "#ffffff",
-    "theme_color": "#007bff",
+    "background_color": "black",
+    "theme_color": "black",
     "icons": [
         {
-            "src": "https://vip-you.github.io/update/icon.png",
+            "src": "https://infostechsworlds.github.io/profile/index.html",
             "type": "image/png",
             "sizes": "192x192"
         },
         {
-            "src": "https://vip-you.github.io/update/icon.png",
+            "src": "https://infostechsworlds.github.io/profile/index.html",
             "type": "image/png",
             "sizes": "512x512"
         }
