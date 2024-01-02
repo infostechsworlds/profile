@@ -3,136 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Developer</title>
-    <!-- Link to Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
-    <!-- Custom CSS for animation and styling -->
-    <style>
-        /* Header styles */
-        header {
-            background-color: #007BFF;
-            color: #fff;
-            padding: 20px 0;
-            text-align: center;
-        }
-
-        /* Navigation styles */
-        .navbar {
-            background-color: #343a40;
-        }
-
-        .navbar-dark .navbar-nav .nav-link {
-            color: #fff;
-        }
-
-        .navbar-dark .navbar-toggler-icon {
-            background-color: #fff;
-        }
-
-        /* Main content styles */
-        main {
-            background-color: #f8f9fa;
-            padding: 50px 0;
-        }
-
-        /* Animation effect */
-        @keyframes fadeInAnimation {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* About Web section styles */
-        .about-web {
-            animation: fadeInAnimation 1s ease-in-out;
-        }
-
-        /* Footer styles */
-        footer {
-            background-color: #343a40;
-            color: #fff;
-            text-align: center;
-            padding: 10px 0;
-        }
-    </style>
+    <title>Raj Web App</title>
+    <!-- Link the web app manifest file -->
+    <link rel="manifest" href="manifest.json">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <h1>Welcome to Our Web Developer Website</h1>
-        <!-- Navigation bar -->
-        <nav class="navbar navbar-expand-lg navbar-dark">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.html">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="terms.html">Terms & Conditions</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="refund.html">Refund Policy</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="privacy.html">Privacy Policy</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+    <h1>Welcome to Raj Web App</h1>
+    <p>This is a simple web app that you can install on your device!</p>
 
-    <!-- Main content -->
-    <main class="container my-5">
-        <section class="about-web">
-            <h2 class="text-center">About Web Development</h2>
-            <p>
-                Web development is the art and science of building websites and web applications. It encompasses a wide range of technologies and skills, including HTML, CSS, JavaScript, and various web frameworks and libraries.
-            </p>
-            <p>
-                In today's digital age, having a strong online presence is essential for businesses, organizations, and individuals. A well-crafted website can serve as your virtual storefront, attracting visitors, conveying information, and facilitating interactions.
-            </p>
-            <p>
-                Our team of experienced web developers is dedicated to delivering high-quality web solutions that meet your unique needs. Whether you require a simple, elegant website or a complex, feature-rich web application, we have the expertise to bring your vision to life.
-            </p>
-            <p>
-                Explore our website to learn more about our services and how we can help you succeed in the digital world.
-            </p>
-        </section>
-    </main>
+    <!-- Add your web app content here -->
 
-    <!-- Footer -->
-    <footer>
-        
-        <div class="container">
-            <p>&copy; 2023 Web Developer</p>
-        </div>
-    </footer>
-<footer>
-        <ul>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="terms.html">Terms & Conditions</a></li>
-            <li><a href="refund.html">Refund Policy</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="privacy.html">Privacy Policy</a></li>
-        </ul>
-        <p>&copy; 2023 Web Developer</p>
-</footer>
-    <!-- Link to Bootstrap JS (optional) -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Check if the web app is running in standalone mode
+        if (window.matchMedia('(display-mode: standalone)').matches) {
+            console.log('Web app is installed and running in standalone mode.');
+        } else {
+            console.log('Web app is running in browser mode.');
+            // Display a button to install the web app on Chrome
+            const installButton = document.createElement('button');
+            installButton.textContent = 'Install App';
+            installButton.addEventListener('click', () => {
+                // Show the install prompt
+                const deferredPrompt = window.promptEvent;
+                if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    deferredPrompt.userChoice.then(choiceResult => {
+                        if (choiceResult.outcome === 'accepted') {
+                            console.log('User accepted the install prompt.');
+                        } else {
+                            console.log('User dismissed the install prompt.');
+                        }
+                        // Clear the prompt event so it doesn't trigger again
+                        window.promptEvent = null;
+                    });
+                }
+            });
+
+            // Listen for the "beforeinstallprompt" event
+            window.addEventListener('beforeinstallprompt', event => {
+                // Prevent Chrome's default "Add to Home screen" prompt
+                event.preventDefault();
+                // Store the event for later use
+                window.promptEvent = event;
+                // Display the install button
+                document.body.appendChild(installButton);
+            });
+        }
+    </script>
 </body>
 </html>
