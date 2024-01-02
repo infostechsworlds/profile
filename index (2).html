@@ -1,0 +1,162 @@
+<html>
+<head>
+    <style>
+        body{
+            background-color: black;
+        }
+        #countdowns {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 10px;
+            background-color: #868791;
+        }
+
+        .countdown {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid black;
+        }
+
+        .title {
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .number {
+            font-size: 36px;
+            text-align: center;
+        }
+
+        #buttons {
+            display: flex;
+            justify-content: center;
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 24px;
+        }
+        h{
+           color: white;
+        }
+    </style>
+</head>
+<body>      
+  
+    <a href="https://wa.me/9350074443" 
+    style="position: fixed; bottom: 20px; right: 20px; background-color: #25d366; color: #fff; padding: 10px 20px; border-radius: 50%; font-size: 18px; text-decoration: none; box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);" class="whatsapp-button" target="_blank">WhatsApp</a>
+
+  
+   <center>
+      <h></h>
+   </center>
+    <div id="countdowns">
+        <div class="countdown">
+            <div class="title">COMPLETE</div>
+            <div class="number" style="background-color: ; font-size: 26px;  border-radius: 80%; width: px; color: white;" id="complete">0</div>
+            <div id="buttons1">
+                <center>
+                <button style="background-color: lime; font-size: 20px;  border-radius: 50%; color: blue;" id="plus1">+</button>
+                <button  style="background-color: lime; font-size: 20px;  border-radius: 50%; color: blue;" id="minus1">-</button>
+                </center>
+                <center>
+               <button  style="background-color: red; font-size: 16px;  border-radius: 50%; color: white;" id="reset1">Reset</button>
+                </center>
+            </div>
+        </div>
+        
+        <div class="countdown">
+            <div class="title">INCOMPLETE</div>
+            <div class="number"  style="background-color: ; font-size: 26px;  border-radius: 50%; color: white;"  id="incomplete">0</div>
+            <div id="buttons2">
+                <center>
+                <button  style="background-color: lime; font-size: 20px;  border-radius: 50%; color: blue;"  id="plus2">+</button>
+                <button  style="background-color: lime; font-size: 20px;  border-radius: 50%; color: blue;"  id="minus2">-</button>
+                </center>
+                
+                <center>
+                <button style="background-color: red; font-size: 16px;  border-radius: 50%; color: white;" id="reset2">Reset</button>
+                </center>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Get the countdown elements
+        var complete = document.getElementById("complete");
+        var incomplete = document.getElementById("incomplete");
+
+        // Get the buttons
+        var plus1 = document.getElementById("plus1");
+        var minus1 = document.getElementById("minus1");
+        var reset1 = document.getElementById("reset1");
+        var plus2 = document.getElementById("plus2");
+        var minus2 = document.getElementById("minus2");
+        var reset2 = document.getElementById("reset2");
+
+        // Get the numbers from local storage or set them to zero
+        var completeNumber = localStorage.getItem("completeNumber") || 0;
+        var incompleteNumber = localStorage.getItem("incompleteNumber") || 0;
+
+        // Update the countdown elements with the numbers
+        complete.innerHTML = completeNumber;
+        incomplete.innerHTML = incompleteNumber;
+
+        // Add event listeners for the buttons
+        plus1.addEventListener("click", function() {
+            // Increment the complete number
+            completeNumber++;
+
+            // Update the complete element and the local storage
+            complete.innerHTML = completeNumber;
+            localStorage.setItem("completeNumber", completeNumber);
+        });
+
+        minus1.addEventListener("click", function() {
+            // Decrement the complete number
+            completeNumber--;
+
+            // Update the complete element and the local storage
+            complete.innerHTML = completeNumber;
+            localStorage.setItem("completeNumber", completeNumber);
+        });
+
+        reset1.addEventListener("click", function() {
+            // Reset the complete number to zero
+            completeNumber = 0;
+
+            // Update the complete element and the local storage
+            complete.innerHTML = completeNumber;
+            localStorage.setItem("completeNumber", completeNumber);
+        });
+
+        plus2.addEventListener("click", function() {
+            // Increment the incomplete number
+            incompleteNumber++;
+
+            // Update the incomplete element and the local storage
+            incomplete.innerHTML = incompleteNumber;
+            localStorage.setItem("incompleteNumber", incompleteNumber);
+        });
+
+        minus2.addEventListener("click", function() {
+            // Decrement the incomplete number
+            incompleteNumber--;
+
+            // Update the incomplete element and the local storage
+            incomplete.innerHTML = incompleteNumber;
+            localStorage.setItem("incompleteNumber", incompleteNumber);
+        });
+
+        reset2.addEventListener("click", function() {
+            // Reset the incomplete number to zero
+            incompleteNumber = 0;
+
+            // Update the incomplete element and the local storage
+            incomplete.innerHTML = incompleteNumber;
+            localStorage.setItem("incompleteNumber", incompleteNumber);
+        });
+    </script>
+</body>
+</html>
+

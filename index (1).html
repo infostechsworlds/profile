@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAJ DEEP WEB</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+    
+
+
+/* Style the table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Style the table header */
+th {
+    height: 50px;
+    background-color: #f0f0f0;
+}
+
+/* Style the table data */
+td {
+    height: 50px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* Style the form */
+form {
+    /*
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; */
+    align-items: center;
+    margin: 20px;
+}
+
+/* Style the form labels */
+label {
+    margin: 10px;
+}
+
+/* Style the form inputs */
+input {
+    width: 200px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+/* Style the form button */
+button {
+    width: 100px;
+    padding: 10px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+/* Style the delete button */
+button.delete {
+    background-color: #F44336;
+}
+    </style>
+
+</head>
+<body>
+  
+    <a href="https://wa.me/9350074443" 
+    style="position: fixed; bottom: 20px; right: 20px; background-color: #25d366; color: #fff; padding: 10px 20px; border-radius: 50%; font-size: 18px; text-decoration: none; box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);" class="whatsapp-button" target="_blank">WhatsApp</a>
+
+  
+    <center>
+        
+    <h1>RAJDEEP-CALL RECORDS</h1>
+    <form id="form">
+        <label for="input1">Attempted</label> 
+        <input type="text" id="input1" name="input1" required> <hr>
+        <label for="input2">Minutes</label>
+        <input type="text" id="input2" name="input2" required> <hr>
+        <label for="input3">Complete</label>
+        <input type="text" id="input3" name="input3" required> <hr>
+        <button type="submit" id="submit">Submit</button>
+    </form>
+    <table id="table">
+        <thead>
+            <tr>
+                <th>Date and Time</th>
+                <th>Attempted</th>
+                <th>Minutes</th>
+                <th>Complete</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+        </tbody>
+    </table>
+    </center>
+    <script>
+    
+   // Get the form elements
+const form = document.getElementById("form");
+const input1 = document.getElementById("input1");
+const input2 = document.getElementById("input2");
+const input3 = document.getElementById("input3");
+const submit = document.getElementById("submit");
+
+// Get the table elements
+const table = document.getElementById("table");
+const tbody = document.getElementById("tbody");
+
+// Load the data from local storage
+let data = JSON.parse(localStorage.getItem("data")) || [];
+
+// Render the data to the table
+function renderData() {
+    // Clear the table body
+    tbody.innerHTML = "";
+    // Loop through the data array in reverse order
+    for (let i = data.length - 1; i >= 0; i--) {
+        // Get the current item
+        let item = data[i];
+        // Create a table row
+        let tr = document.createElement("tr");
+        // Create a table cell for each property
+        let tdDate = document.createElement("td");
+        tdDate.textContent = item.date;
+        let tdInput1 = document.createElement("td");
+        tdInput1.textContent = item.input1;
+        let tdInput2 = document.createElement("td");
+        tdInput2.textContent = item.input2;
+        let tdInput3 = document.createElement("td");
+        tdInput3.textContent = item.input3;
+        let tdAction = document.createElement("td");
+        // Create a delete button
+        let deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "Delete";
+        deleteBtn.addEventListener("click", function() {
+            // Delete the item from the data array
+            data.splice(i, 1);
+            // Save the data to local storage
+            localStorage.setItem("data", JSON.stringify(data));
+            // Render the data again
+            renderData();
+        });
+        // Append the delete button to the action cell
+        tdAction.appendChild(deleteBtn);
+        // Append the cells to the row
+        tr.appendChild(tdDate);
+        tr.appendChild(tdInput1);
+        tr.appendChild(tdInput2);
+        tr.appendChild(tdInput3);
+        tr.appendChild(tdAction);
+        // Append the row to the table body
+        tbody.appendChild(tr);
+    }
+}
+
+// Call the render function initially
+renderData();
+
+// Add an event listener to the form submit
+form.addEventListener("submit", function(event) {
+    // Prevent the default behavior
+    event.preventDefault();
+    // Get the input values
+    let input1Value = input1.value;
+    let input2Value = input2.value;
+    let input3Value = input3.value;
+    // Get the current date and time
+    let date = new Date().toLocaleString();
+    // Create an object with the input values and the date
+    let obj = {
+        date: date,
+        input1: input1Value,
+        input2: input2Value,
+        input3: input3Value
+    };
+    // Push the object to the data array
+    data.push(obj);
+    // Save the data to local storage
+    localStorage.setItem("data", JSON.stringify(data));
+    // Render the data again
+    renderData();
+    // Clear the input fields
+    input1.value = "";
+    input2.value = "";
+    input3.value = "";
+});
+
+    </script>
+</body>
+</html>
+
