@@ -1,7 +1,7 @@
 {
     "name": "infostechsworlds Web App",
     "short_name": "infostechsworlds",
-    "start_url": "https://infostechsworlds.github.io/profile/index.html",
+    "start_url": "https://infostechsworlds.github.io/profile/c/index.html",
     "display": "standalone",
     "background_color": "black",
     "theme_color": "black",
