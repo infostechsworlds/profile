@@ -4,7 +4,7 @@ self.addEventListener('install', event => {
         caches.open('my-web-app-v1').then(cache => {
             return cache.addAll([
                 // List of files to be cached
-                'index.html',
+               // 'index.html',
                 'c/index.html',
                 'r/index.html',
                 'https://infostechsworlds.github.io/profile/skill.png',
